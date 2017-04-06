@@ -16,5 +16,19 @@ namespace Goatshop
         {
             InitializeComponent();
         }
+
+        public void Plotdata()
+        {
+           
+            foreach (Product product in Settings.db.Product)
+            {
+                textBox1.Text += product.Name;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Plotdata();
+        }
     }
 }
