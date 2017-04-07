@@ -12,9 +12,17 @@ namespace Goatshop
 {
     public partial class EditCategory : Form
     {
-        public EditCategory()
+        private Category _Category;
+        public EditCategory( Category category)
         {
             InitializeComponent();
+
+            _Category = category;
+
+            groupBox1.Text = _Category.Category1;
+
+            textBoxCategory.Text = _Category.Category1;
+            textBoxDescription.Text = _Category.Description;
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -24,7 +32,12 @@ namespace Goatshop
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            _Category.Category1 = textBoxCategory.Text;
+            _Category.Description = textBoxDescription.Text;
 
+            Settings.db.SaveChanges();
+
+            Close();
         }
     }
 }
