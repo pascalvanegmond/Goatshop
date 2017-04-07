@@ -30,5 +30,14 @@ namespace Goatshop
         {
             Plotdata();
         }
+
+        private void buttonCategory_Click(object sender, EventArgs e)
+        {
+            CategoryForm categoryForm = new CategoryForm();
+            categoryForm.Show();
+            //PersonEditForm personEditForm = new PersonEditForm(selectedPerson);
+            //personEditForm.FormClosed += Reload_FormClosed;
+            //personEditForm.Show();
+        }
     }
 }
