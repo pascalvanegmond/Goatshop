@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7a1a4fce22214c4a999bf87c07013baf" Name="Diagram1">
-        <EntityTypeShape EntityType="ShopModel.Category" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopModel.Customer" Width="1.5" PointX="12" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopModel.Order" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ShopModel.OrderRow" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ShopModel.Supplier" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <AssociationConnector Association="ShopModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="ShopModel.FK_Order_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="ShopModel.FK_OrderRow_Order" ManuallyRouted="false" />
         <AssociationConnector Association="ShopModel.FK_OrderRow_Product" ManuallyRouted="false" />
         <AssociationConnector Association="ShopModel.FK_Product_Supplier" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShopModel.Order" Width="1.5" PointX="7.75" PointY="4.375" />
+        <AssociationConnector Association="ShopModel.FK_OrderRow_Order" />
+        <EntityTypeShape EntityType="ShopModel.Category" Width="1.5" PointX="3.5" PointY="5.5" />
+        <AssociationConnector Association="ShopModel.FK_Product_Category" />
+        <EntityTypeShape EntityType="ShopModel.Customer" Width="1.5" PointX="9.625" PointY="4.375" />
+        <AssociationConnector Association="ShopModel.FK_Order_Customer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -35,9 +35,19 @@ namespace Goatshop
         {
             CategoryForm categoryForm = new CategoryForm();
             categoryForm.Show();
-            //PersonEditForm personEditForm = new PersonEditForm(selectedPerson);
-            //personEditForm.FormClosed += Reload_FormClosed;
-            //personEditForm.Show();
+
+        }
+
+        private void buttonSupplier_Click(object sender, EventArgs e)
+        {
+            SupplierForm supplierform = new SupplierForm();
+            supplierform.Show();
+        }
+
+        private void buttonCustomer_Click(object sender, EventArgs e)
+        {
+            CustomerForm customerForm = new CustomerForm();
+            customerForm.Show();
         }
     }
 }

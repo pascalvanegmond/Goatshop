@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Goatshop
 {
-    public partial class CategoryForm : Form
+    public partial class SupplierForm : Form
     {
-        public CategoryForm()
+        public SupplierForm()
         {
             InitializeComponent();
             ShowList();
@@ -21,18 +21,19 @@ namespace Goatshop
         // Show all categories
         public void ShowList()
         {
-            listViewCategory.Items.Clear();
+            listViewSupplier.Items.Clear();
 
-            foreach (Category category in Settings.db.Category)
+            foreach (Supplier supplier in Settings.db.Supplier)
             {
-                ListViewItem categoryList = new ListViewItem();
+                ListViewItem supplierList = new ListViewItem();
 
                 // setup the data for a list.
-                categoryList.Text = (category.Category1);
-                categoryList.SubItems.Add(category.Description);
-                categoryList.Tag = category.ID;
+                supplierList.Text = (supplier.Name);
+                supplierList.SubItems.Add(supplier.Description);
+                supplierList.SubItems.Add(supplier.Adress);
+                supplierList.Tag = supplier.ID;
                 // add them to the list.
-                listViewCategory.Items.Add(categoryList);
+                listViewSupplier.Items.Add(supplierList);
             }
         }
 
@@ -49,22 +50,22 @@ namespace Goatshop
         }
 
         // Get your selected category
-        public Category SelectedCat()
+        public Supplier SelectedSupp()
         {
-            var CategoryID = listViewCategory.SelectedItems[0].Tag;
+            var SupplierID = listViewSupplier.SelectedItems[0].Tag;
 
-            Category selectedCategory = Settings.db.Category.Find(CategoryID);
+            Supplier selectedSupplier = Settings.db.Supplier.Find(SupplierID);
 
-            return selectedCategory;
+            return selectedSupplier;
         }
 
         // Open edit form
-        public void OpenEditForm(Category category)
+        public void OpenEditForm(Supplier supplier)
         {
-            EditCategory editCat = new EditCategory(category);
+            EditSupplier editSupp = new EditSupplier(supplier);
 
-            editCat.FormClosed += Reload_FormClosed;
-            editCat.Show();
+            editSupp.FormClosed += Reload_FormClosed;
+            editSupp.Show();
         }
 
 
@@ -73,37 +74,37 @@ namespace Goatshop
         // Create
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            Category newCat = new Category();
+            Supplier newSupp = new Supplier();
 
-            OpenEditForm(newCat);
-
+            OpenEditForm(newSupp);
         }
 
         // Update
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (listViewCategory.SelectedItems.Count > 0)
+            if (listViewSupplier.SelectedItems.Count > 0)
             {
-                OpenEditForm(SelectedCat());
+                OpenEditForm(SelectedSupp());
             }
-
         }
+
 
         // Delete
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
-            if (SelectedCat().Product.Count == 0)
+            if (SelectedSupp().Product.Count == 0)
             {
-                Settings.db.Category.Remove(SelectedCat());
+                Settings.db.Supplier.Remove(SelectedSupp());
                 Settings.db.SaveChanges();
 
                 ShowList();
             }
             else
             {
-                MessageBox.Show("Sorry you cant delete a Category with attached products. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                MessageBox.Show("Sorry you cant delete a Supplier with attached products. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
             }
         }
+
+
     }
 }

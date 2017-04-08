@@ -10,21 +10,23 @@ using System.Windows.Forms;
 
 namespace Goatshop
 {
-    public partial class EditCategory : Form
+    public partial class EditCustomer : Form
     {
-        private Category _Category;
+        private Customer _Customer;
 
         // Set All old value's in the textboxes
-        public EditCategory( Category category)
+        public EditCustomer(Customer customer)
         {
             InitializeComponent();
 
-            _Category = category;
+            _Customer = customer;
 
-            groupBox1.Text = _Category.Category1;
+            groupBox1.Text += _Customer.FirstName + _Customer.LastName;
 
-            textBoxCategory.Text = _Category.Category1;
-            textBoxDescription.Text = _Category.Description;
+            textBoxFirstname.Text = _Customer.FirstName;
+            textBoxLastname.Text = _Customer.LastName;
+            dateTimePickerBirthday.Text = _Customer.Birthday.ToString();
+            textBoxAddress.Text = _Customer.Adress;
         }
 
         // return to last page
@@ -36,28 +38,27 @@ namespace Goatshop
         // update or create the object and save it in the database.
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-
             // check if its a new record.
-            if (_Category.Category1 == null)
+            if (_Customer.FirstName == null)
             {
-                Settings.db.Category.Add(_Category);
+                Settings.db.Customer.Add(_Customer);
             }
 
-            _Category.Category1 = textBoxCategory.Text;
-            _Category.Description = textBoxDescription.Text;
+            _Customer.FirstName = textBoxFirstname.Text;
+            _Customer.LastName = textBoxLastname.Text;
+            _Customer.Birthday = dateTimePickerBirthday.Value.Date;
+            _Customer.Adress = textBoxAddress.Text;
 
             // Check it the category is provided because the category cant be null.
-            if (_Category.Category1 != "")
+            if (_Customer.FirstName != "" && _Customer.Adress != "")
             {
                 Settings.db.SaveChanges();
                 Close();
             }
             else
             {
-                MessageBox.Show("Category cant be empty", "ERROR");
+                MessageBox.Show("Firstname and the Address cant be empty", "ERROR");
             }
-
-            
         }
     }
 }

@@ -35,6 +35,9 @@
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listViewCategory
@@ -44,7 +47,7 @@
             this.DescriptionHeader});
             this.listViewCategory.FullRowSelect = true;
             this.listViewCategory.GridLines = true;
-            this.listViewCategory.Location = new System.Drawing.Point(56, 39);
+            this.listViewCategory.Location = new System.Drawing.Point(28, 58);
             this.listViewCategory.Name = "listViewCategory";
             this.listViewCategory.Size = new System.Drawing.Size(297, 357);
             this.listViewCategory.TabIndex = 0;
@@ -63,7 +66,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(398, 123);
+            this.buttonEdit.Location = new System.Drawing.Point(23, 35);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
             this.buttonEdit.TabIndex = 1;
@@ -73,7 +76,7 @@
             // 
             // buttonNew
             // 
-            this.buttonNew.Location = new System.Drawing.Point(398, 165);
+            this.buttonNew.Location = new System.Drawing.Point(23, 77);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(75, 23);
             this.buttonNew.TabIndex = 2;
@@ -83,7 +86,7 @@
             // 
             // buttonReturn
             // 
-            this.buttonReturn.Location = new System.Drawing.Point(398, 253);
+            this.buttonReturn.Location = new System.Drawing.Point(23, 165);
             this.buttonReturn.Name = "buttonReturn";
             this.buttonReturn.Size = new System.Drawing.Size(75, 23);
             this.buttonReturn.TabIndex = 4;
@@ -93,7 +96,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(398, 208);
+            this.buttonDelete.Location = new System.Drawing.Point(23, 120);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 3;
@@ -101,19 +104,41 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // labelTitle
+            // 
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(21, 10);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(357, 42);
+            this.labelTitle.TabIndex = 16;
+            this.labelTitle.Text = "Categories overview";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonDelete);
+            this.groupBox1.Controls.Add(this.buttonEdit);
+            this.groupBox1.Controls.Add(this.buttonReturn);
+            this.groupBox1.Controls.Add(this.buttonNew);
+            this.groupBox1.Location = new System.Drawing.Point(347, 108);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(121, 222);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            // 
             // CategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 433);
-            this.Controls.Add(this.buttonReturn);
-            this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonNew);
-            this.Controls.Add(this.buttonEdit);
+            this.ClientSize = new System.Drawing.Size(489, 450);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.listViewCategory);
             this.Name = "CategoryForm";
             this.Text = "CategoryForm";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +151,7 @@
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonReturn;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

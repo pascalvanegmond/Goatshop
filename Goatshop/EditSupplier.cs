@@ -10,21 +10,23 @@ using System.Windows.Forms;
 
 namespace Goatshop
 {
-    public partial class EditCategory : Form
+    public partial class EditSupplier : Form
     {
-        private Category _Category;
+        private Supplier _Supplier;
 
         // Set All old value's in the textboxes
-        public EditCategory( Category category)
+        public EditSupplier( Supplier supplier)
         {
             InitializeComponent();
 
-            _Category = category;
+            _Supplier = supplier;
 
-            groupBox1.Text = _Category.Category1;
+            groupBox1.Text = _Supplier.Name;
 
-            textBoxCategory.Text = _Category.Category1;
-            textBoxDescription.Text = _Category.Description;
+            textBoxSupplier.Text = _Supplier.Name;
+            textBoxDescription.Text = _Supplier.Description;
+            textBoxAddress.Text = _Supplier.Adress;
+
         }
 
         // return to last page
@@ -36,28 +38,26 @@ namespace Goatshop
         // update or create the object and save it in the database.
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-
             // check if its a new record.
-            if (_Category.Category1 == null)
+            if (_Supplier.Name == null)
             {
-                Settings.db.Category.Add(_Category);
+                Settings.db.Supplier.Add(_Supplier);
             }
 
-            _Category.Category1 = textBoxCategory.Text;
-            _Category.Description = textBoxDescription.Text;
+            _Supplier.Name = textBoxSupplier.Text;
+            _Supplier.Description = textBoxDescription.Text;
+            _Supplier.Adress = textBoxAddress.Text;
 
             // Check it the category is provided because the category cant be null.
-            if (_Category.Category1 != "")
+            if (_Supplier.Name != "" && _Supplier.Adress != "")
             {
                 Settings.db.SaveChanges();
                 Close();
             }
             else
             {
-                MessageBox.Show("Category cant be empty", "ERROR");
+                MessageBox.Show("Name and the Address cant be empty", "ERROR");
             }
-
-            
         }
     }
 }

@@ -25,13 +25,14 @@ namespace Goatshop
         public string Name { get; set; }
         public string Description { get; set; }
         public byte[] Photo { get; set; }
-        public Nullable<int> AmountInStock { get; set; }
+        public int AmountInStock { get; set; }
         public Nullable<int> Category_ID { get; set; }
         public Nullable<int> Supplier_ID { get; set; }
+        public Nullable<System.DateTime> Deleted { get; set; }
     
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderRow> OrderRow { get; set; }
         public virtual Supplier Supplier { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

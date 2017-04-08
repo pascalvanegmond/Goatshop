@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Goatshop
 {
-    public partial class CategoryForm : Form
+    public partial class CustomerForm : Form
     {
-        public CategoryForm()
+        public CustomerForm()
         {
             InitializeComponent();
             ShowList();
@@ -21,18 +21,20 @@ namespace Goatshop
         // Show all categories
         public void ShowList()
         {
-            listViewCategory.Items.Clear();
+            listViewCustomer.Items.Clear();
 
-            foreach (Category category in Settings.db.Category)
+            foreach (Customer customer in Settings.db.Customer)
             {
-                ListViewItem categoryList = new ListViewItem();
+                ListViewItem customerList = new ListViewItem();
 
                 // setup the data for a list.
-                categoryList.Text = (category.Category1);
-                categoryList.SubItems.Add(category.Description);
-                categoryList.Tag = category.ID;
+                customerList.Text = (customer.FirstName);
+                customerList.SubItems.Add(customer.LastName);
+                customerList.SubItems.Add(customer.Adress);
+                customerList.SubItems.Add(customer.Birthday.ToString());
+                customerList.Tag = customer.ID;
                 // add them to the list.
-                listViewCategory.Items.Add(categoryList);
+                listViewCustomer.Items.Add(customerList);
             }
         }
 
@@ -49,22 +51,22 @@ namespace Goatshop
         }
 
         // Get your selected category
-        public Category SelectedCat()
+        public Customer SelectedCustomer()
         {
-            var CategoryID = listViewCategory.SelectedItems[0].Tag;
+            var CustomerID = listViewCustomer.SelectedItems[0].Tag;
 
-            Category selectedCategory = Settings.db.Category.Find(CategoryID);
+            Customer selectedCustomer = Settings.db.Customer.Find(CustomerID);
 
-            return selectedCategory;
+            return selectedCustomer;
         }
 
         // Open edit form
-        public void OpenEditForm(Category category)
+        public void OpenEditForm(Customer customer)
         {
-            EditCategory editCat = new EditCategory(category);
+            EditCustomer editCustomer = new EditCustomer(customer);
 
-            editCat.FormClosed += Reload_FormClosed;
-            editCat.Show();
+            editCustomer.FormClosed += Reload_FormClosed;
+            editCustomer.Show();
         }
 
 
@@ -73,36 +75,34 @@ namespace Goatshop
         // Create
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            Category newCat = new Category();
+            Customer newCustomer = new Customer();
 
-            OpenEditForm(newCat);
-
+            OpenEditForm(newCustomer);
         }
 
         // Update
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (listViewCategory.SelectedItems.Count > 0)
+            if (listViewCustomer.SelectedItems.Count > 0)
             {
-                OpenEditForm(SelectedCat());
+                OpenEditForm(SelectedCustomer());
             }
-
         }
+
 
         // Delete
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
-            if (SelectedCat().Product.Count == 0)
+            if (SelectedCustomer().Order.Count == 0)
             {
-                Settings.db.Category.Remove(SelectedCat());
+                Settings.db.Customer.Remove(SelectedCustomer());
                 Settings.db.SaveChanges();
 
                 ShowList();
             }
             else
             {
-                MessageBox.Show("Sorry you cant delete a Category with attached products. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                MessageBox.Show("Sorry you cant delete a Customer who has orders. \nPlease remove those orders first.\n\nTry again after changing", "Error!");
             }
         }
     }
