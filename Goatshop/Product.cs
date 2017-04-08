@@ -30,9 +30,9 @@ namespace Goatshop
         public Nullable<int> Supplier_ID { get; set; }
         public Nullable<System.DateTime> Deleted { get; set; }
     
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderRow> OrderRow { get; set; }
         public virtual Supplier Supplier { get; set; }
-        public virtual Category Category { get; set; }
     }
 }

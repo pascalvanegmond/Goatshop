@@ -19,7 +19,7 @@ namespace Goatshop
         public string Amount { get; set; }
         public Nullable<decimal> Price { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

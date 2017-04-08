@@ -49,5 +49,11 @@ namespace Goatshop
             CustomerForm customerForm = new CustomerForm();
             customerForm.Show();
         }
+
+        private void buttonProduct_Click(object sender, EventArgs e)
+        {
+            ProductForm productForm = new ProductForm();
+            productForm.Show();
+        }
     }
 }

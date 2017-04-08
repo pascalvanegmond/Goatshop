@@ -102,6 +102,7 @@
             this.buttonProduct.TabIndex = 2;
             this.buttonProduct.Text = "Product";
             this.buttonProduct.UseVisualStyleBackColor = true;
+            this.buttonProduct.Click += new System.EventHandler(this.buttonProduct_Click);
             // 
             // buttonOrder
             // 
