@@ -112,6 +112,7 @@
             this.buttonOrder.TabIndex = 2;
             this.buttonOrder.Text = "Order";
             this.buttonOrder.UseVisualStyleBackColor = true;
+            this.buttonOrder.Click += new System.EventHandler(this.buttonOrder_Click);
             // 
             // Form1
             // 

@@ -21,12 +21,12 @@ namespace Goatshop
         }
     
         public int ID { get; set; }
-        public Nullable<int> Customer_ID { get; set; }
-        public Nullable<int> OrderNumber { get; set; }
+        public int Customer_ID { get; set; }
+        public string OrderNumber { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
     
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderRow> OrderRow { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }

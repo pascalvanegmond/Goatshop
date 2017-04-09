@@ -13,10 +13,7 @@ namespace Goatshop
     public partial class ProductForm : Form
     {
         public Boolean showDeleted = false;
-
         public String searchTerm = null;
-
-        //public Boolean search = false;
 
         public ProductForm()
         {
@@ -152,10 +149,7 @@ namespace Goatshop
             {
                 if (SelectedProduct().OrderRow.Count == 0)
                 {
-
                     SelectedProduct().Deleted = DateTime.Now;
-
-                    //Settings.db.Product.Remove(SelectedProduct());
                     Settings.db.SaveChanges();
 
                     ShowList();

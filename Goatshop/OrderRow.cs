@@ -16,10 +16,10 @@ namespace Goatshop
     {
         public int Order_ID { get; set; }
         public int Product_ID { get; set; }
-        public string Amount { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public int Amount { get; set; }
+        public decimal Price { get; set; }
     
-        public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

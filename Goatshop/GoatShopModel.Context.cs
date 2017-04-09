@@ -26,10 +26,10 @@ namespace Goatshop
         }
     
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<OrderRow> OrderRow { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
     }
 }
