@@ -92,17 +92,23 @@ namespace Goatshop
         // Delete
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
-            if (SelectedCat().Product.Count == 0)
+            if (listViewCategory.SelectedItems.Count > 0)
             {
-                Settings.db.Category.Remove(SelectedCat());
-                Settings.db.SaveChanges();
+                if (SelectedCat().Product.Count == 0)
+                {
+                    Settings.db.Category.Remove(SelectedCat());
+                    Settings.db.SaveChanges();
 
-                ShowList();
+                    ShowList();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry you cant delete a Category with attached products. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                }
             }
             else
             {
-                MessageBox.Show("Sorry you cant delete a Category with attached products. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                MessageBox.Show("Nothing selected", "Info");
             }
         }
     }

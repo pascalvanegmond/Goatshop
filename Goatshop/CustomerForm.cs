@@ -93,16 +93,23 @@ namespace Goatshop
         // Delete
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (SelectedCustomer().Order.Count == 0)
+            if (listViewCustomer.SelectedItems.Count > 0)
             {
-                Settings.db.Customer.Remove(SelectedCustomer());
-                Settings.db.SaveChanges();
+                if (SelectedCustomer().Order.Count == 0)
+                {
+                    Settings.db.Customer.Remove(SelectedCustomer());
+                    Settings.db.SaveChanges();
 
-                ShowList();
+                    ShowList();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry you cant delete a Customer who has orders. \nPlease remove those orders first.\n\nTry again after changing", "Error!");
+                }
             }
             else
             {
-                MessageBox.Show("Sorry you cant delete a Customer who has orders. \nPlease remove those orders first.\n\nTry again after changing", "Error!");
+                MessageBox.Show("Nothing selected", "Info");
             }
         }
     }

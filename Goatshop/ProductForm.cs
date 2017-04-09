@@ -12,7 +12,11 @@ namespace Goatshop
 {
     public partial class ProductForm : Form
     {
-        public static Boolean showDeleted = false;
+        public Boolean showDeleted = false;
+
+        public String searchTerm = null;
+
+        //public Boolean search = false;
 
         public ProductForm()
         {
@@ -27,11 +31,24 @@ namespace Goatshop
 
 
             var ListOffProducts = (from product in Settings.db.Product
-                                   where product.Deleted == null && showDeleted == false ||
-                                   product.Deleted != null && showDeleted == true
+                                   where (product.Deleted == null && showDeleted == false ||
+                                   product.Deleted != null && showDeleted == true)
                                     select product).ToList();
             
-            
+           
+
+            if (searchTerm != null)
+            {
+                Console.WriteLine(searchTerm);
+                var ListOffSearchTerms = (from product in ListOffProducts
+                                          where (product.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxProductName.Checked == true) || 
+                                          (product.Description.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxDescription.Checked == true)
+                                          select product).ToList();
+
+                ListOffProducts = ListOffSearchTerms;
+            }
+
+
 
             foreach (Product product in ListOffProducts)
             {
@@ -50,6 +67,7 @@ namespace Goatshop
             }
         }
 
+        // Change setting to view deleted or the existing products
         private void buttonShowDeleted_Click(object sender, EventArgs e)
         {
             if (buttonShowDeleted.Text == "Show deleted products")
@@ -57,12 +75,14 @@ namespace Goatshop
                 labelDeleted.Text = "Showing deleted items";
                 buttonShowDeleted.Text = "Show current products";
                 showDeleted = true;
+                buttonRestoreDeleted.Visible = true;
             }
             else if (buttonShowDeleted.Text == "Show current products")
             {
                 labelDeleted.Text = "";
                 buttonShowDeleted.Text = "Show deleted products";
                 showDeleted = false;
+                buttonRestoreDeleted.Visible = false;
             }
 
             ShowList();
@@ -94,10 +114,10 @@ namespace Goatshop
         // Open edit form
         public void OpenEditForm(Product product)
         {
-            //EditSupplier editProduct = new EditSupplier(product);
+            EditProduct editProduct = new EditProduct(product);
 
-            //editProduct.FormClosed += Reload_FormClosed;
-            //editProduct.Show();
+            editProduct.FormClosed += Reload_FormClosed;
+            editProduct.Show();
         }
 
 
@@ -118,27 +138,86 @@ namespace Goatshop
             {
                 OpenEditForm(SelectedProduct());
             }
+            else
+            {
+                MessageBox.Show("Nothing selected", "Info");
+            }
         }
 
 
         // Delete
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (SelectedProduct().OrderRow.Count == 0)
+            if (listViewProduct.SelectedItems.Count > 0)
             {
+                if (SelectedProduct().OrderRow.Count == 0)
+                {
 
-                SelectedProduct().Deleted = DateTime.Now;
-                  
-                //Settings.db.Product.Remove(SelectedProduct());
-                Settings.db.SaveChanges();
+                    SelectedProduct().Deleted = DateTime.Now;
 
-                ShowList();
+                    //Settings.db.Product.Remove(SelectedProduct());
+                    Settings.db.SaveChanges();
+
+                    ShowList();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry you cant delete a Product with attached orders. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                }
             }
             else
             {
-                MessageBox.Show("Sorry you cant delete a Product with attached orders. \nPlease remove or change those products first.\n\nTry again after changing", "Error!");
+                MessageBox.Show("Nothing selected", "Info");
             }
         }
 
+        // Restore deleted
+        private void buttonRestoreDeleted_Click(object sender, EventArgs e)
+        {
+            if (listViewProduct.SelectedItems.Count > 0)
+            {
+                if (SelectedProduct().Deleted != null)
+                {
+                    SelectedProduct().Deleted = null;
+                    Settings.db.SaveChanges();
+
+                    buttonShowDeleted.PerformClick();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nothing selected", "Info");
+            }
+        }
+
+
+        // Search
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            if (textBoxSearch.Text == "")
+            {
+                searchTerm = null;
+            }
+            else if (checkBoxProductName.Checked == false && checkBoxDescription.Checked == false)
+            {
+                searchTerm = null;
+            }
+            else
+            {
+                searchTerm = textBoxSearch.Text;
+            }
+            
+            ShowList();
+        }
+
+        // Reset the search term
+        private void buttonResetSearch_Click(object sender, EventArgs e)
+        {
+            searchTerm = null;
+            textBoxSearch.Text = "";
+        
+            ShowList();
+        }
     }
 }
