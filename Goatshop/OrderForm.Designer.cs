@@ -174,6 +174,7 @@
             this.buttonEdit.TabIndex = 6;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonReturn
             // 
@@ -183,6 +184,7 @@
             this.buttonReturn.TabIndex = 9;
             this.buttonReturn.Text = "Return";
             this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
             // buttonNew
             // 
@@ -192,6 +194,7 @@
             this.buttonNew.TabIndex = 7;
             this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // labelDeleted
             // 

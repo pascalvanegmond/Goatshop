@@ -36,7 +36,6 @@ namespace Goatshop
 
             if (searchTerm != null)
             {
-                Console.WriteLine(searchTerm);
                 var ListOffSearchTerms = (from product in ListOffProducts
                                           where (product.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxProductName.Checked == true) || 
                                           (product.Description.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxDescription.Checked == true)
