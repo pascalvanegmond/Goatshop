@@ -68,15 +68,10 @@
             this.buttonAddToOrder = new System.Windows.Forms.Button();
             this.labelTitleAdd = new System.Windows.Forms.Label();
             this.labelTitleOrder = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonDeleteOrderRow = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -92,10 +87,9 @@
             this.groupBox1.Controls.Add(this.buttonReturn);
             this.groupBox1.Location = new System.Drawing.Point(32, 74);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(312, 609);
+            this.groupBox1.Size = new System.Drawing.Size(327, 609);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // textBoxCreated
             // 
@@ -443,44 +437,6 @@
             this.labelTitleOrder.TabIndex = 2;
             this.labelTitleOrder.Text = "Order";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.buttonDeleteOrderRow);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Location = new System.Drawing.Point(981, 313);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(130, 158);
-            this.groupBox4.TabIndex = 33;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Search product";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(17, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBoxSearchProduct_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(17, 119);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Reset";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteOrderRow
-            // 
-            this.buttonDeleteOrderRow.Location = new System.Drawing.Point(17, 90);
-            this.buttonDeleteOrderRow.Name = "buttonDeleteOrderRow";
-            this.buttonDeleteOrderRow.Size = new System.Drawing.Size(100, 23);
-            this.buttonDeleteOrderRow.TabIndex = 6;
-            this.buttonDeleteOrderRow.Text = "Delete selected";
-            this.buttonDeleteOrderRow.UseVisualStyleBackColor = true;
-            // 
             // EditOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,7 +445,6 @@
             this.Controls.Add(this.buttonAddToOrder);
             this.Controls.Add(this.numericQuantity);
             this.Controls.Add(this.listViewOrder);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.listViewProduct);
             this.Controls.Add(this.labelTitleOrder);
@@ -506,8 +461,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,9 +508,5 @@
         private System.Windows.Forms.Button buttonAddToOrder;
         private System.Windows.Forms.Label labelTitleAdd;
         private System.Windows.Forms.Label labelTitleOrder;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonDeleteOrderRow;
-        private System.Windows.Forms.Button button1;
     }
 }

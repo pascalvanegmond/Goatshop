@@ -10,25 +10,12 @@ using System.Windows.Forms;
 
 namespace Goatshop
 {
-    public partial class Form1 : Form
+    public partial class GoatShop : Form
     {
-        public Form1()
+        public GoatShop()
         {
             InitializeComponent();
-        }
-
-        public void Plotdata()
-        {
-           
-            foreach (Product product in Settings.db.Product)
-            {
-                textBox1.Text += product.Name;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Plotdata();
+            ShowLatestOrders();
         }
 
         private void buttonCategory_Click(object sender, EventArgs e)
@@ -60,6 +47,44 @@ namespace Goatshop
         {
             OrderForm orderForm = new OrderForm();
             orderForm.Show();
+        }
+
+        public void ShowLatestOrders()
+        {
+            listViewOrder.Items.Clear();
+
+
+            var ListOffOrders = (from order in Settings.db.Order
+                                 orderby order.Created descending
+                                 select order).ToList();
+
+            foreach (Order order in ListOffOrders)
+            {
+                ListViewItem orderList = new ListViewItem();
+
+                // Calculate the total order price
+                Decimal totalPrice = 0;
+                int totalProducts = 0;
+                if (order.OrderRow.Count > 0)
+                {
+                    foreach (OrderRow item in order.OrderRow)
+                    {
+                        totalProducts += item.Amount;
+                        totalPrice += (item.Price * item.Amount);
+                    }
+                }
+
+                // setup the data for a list.
+                orderList.Text = (order.OrderNumber);
+                orderList.SubItems.Add(order.Customer.FirstName + " " + order.Customer.LastName);
+                orderList.SubItems.Add(totalProducts.ToString());
+                orderList.SubItems.Add(totalPrice.ToString());
+                orderList.SubItems.Add(order.Created.ToString());
+                orderList.Tag = order.ID;
+                // add them to the list.
+                listViewOrder.Items.Add(orderList);
+            }
+
         }
     }
 }

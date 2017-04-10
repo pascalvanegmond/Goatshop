@@ -50,13 +50,14 @@
             this.checkBoxDescription = new System.Windows.Forms.CheckBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonResetSearch = new System.Windows.Forms.Button();
+            this.checkBoxCategory = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(28, 109);
+            this.buttonDelete.Location = new System.Drawing.Point(30, 102);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 8;
@@ -66,7 +67,7 @@
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(28, 24);
+            this.buttonEdit.Location = new System.Drawing.Point(30, 17);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
             this.buttonEdit.TabIndex = 6;
@@ -76,7 +77,7 @@
             // 
             // buttonReturn
             // 
-            this.buttonReturn.Location = new System.Drawing.Point(28, 154);
+            this.buttonReturn.Location = new System.Drawing.Point(30, 147);
             this.buttonReturn.Name = "buttonReturn";
             this.buttonReturn.Size = new System.Drawing.Size(75, 23);
             this.buttonReturn.TabIndex = 9;
@@ -86,7 +87,7 @@
             // 
             // buttonNew
             // 
-            this.buttonNew.Location = new System.Drawing.Point(28, 66);
+            this.buttonNew.Location = new System.Drawing.Point(30, 59);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(75, 23);
             this.buttonNew.TabIndex = 7;
@@ -148,9 +149,9 @@
             this.groupBox1.Controls.Add(this.buttonEdit);
             this.groupBox1.Controls.Add(this.buttonReturn);
             this.groupBox1.Controls.Add(this.buttonNew);
-            this.groupBox1.Location = new System.Drawing.Point(717, 219);
+            this.groupBox1.Location = new System.Drawing.Point(717, 225);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(130, 196);
+            this.groupBox1.Size = new System.Drawing.Size(130, 190);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
@@ -209,6 +210,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxCategory);
             this.groupBox2.Controls.Add(this.textBoxSearch);
             this.groupBox2.Controls.Add(this.checkBoxDescription);
             this.groupBox2.Controls.Add(this.buttonResetSearch);
@@ -216,7 +218,7 @@
             this.groupBox2.Controls.Add(this.checkBoxProductName);
             this.groupBox2.Location = new System.Drawing.Point(717, 50);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(130, 162);
+            this.groupBox2.Size = new System.Drawing.Size(130, 177);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -240,7 +242,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(17, 99);
+            this.buttonSearch.Location = new System.Drawing.Point(17, 116);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(100, 23);
             this.buttonSearch.TabIndex = 6;
@@ -250,13 +252,23 @@
             // 
             // buttonResetSearch
             // 
-            this.buttonResetSearch.Location = new System.Drawing.Point(17, 129);
+            this.buttonResetSearch.Location = new System.Drawing.Point(17, 146);
             this.buttonResetSearch.Name = "buttonResetSearch";
             this.buttonResetSearch.Size = new System.Drawing.Size(100, 23);
             this.buttonResetSearch.TabIndex = 6;
             this.buttonResetSearch.Text = "Reset";
             this.buttonResetSearch.UseVisualStyleBackColor = true;
             this.buttonResetSearch.Click += new System.EventHandler(this.buttonResetSearch_Click);
+            // 
+            // checkBoxCategory
+            // 
+            this.checkBoxCategory.AutoSize = true;
+            this.checkBoxCategory.Location = new System.Drawing.Point(17, 93);
+            this.checkBoxCategory.Name = "checkBoxCategory";
+            this.checkBoxCategory.Size = new System.Drawing.Size(68, 17);
+            this.checkBoxCategory.TabIndex = 24;
+            this.checkBoxCategory.Text = "Category";
+            this.checkBoxCategory.UseVisualStyleBackColor = true;
             // 
             // ProductForm
             // 
@@ -304,5 +316,6 @@
         private System.Windows.Forms.CheckBox checkBoxDescription;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonResetSearch;
+        private System.Windows.Forms.CheckBox checkBoxCategory;
     }
 }

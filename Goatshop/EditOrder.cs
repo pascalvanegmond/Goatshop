@@ -22,6 +22,14 @@ namespace Goatshop
 
             _Order = order;
 
+            if (_Order.OrderNumber != null)
+            {
+                groupBox1.Text = _Order.OrderNumber;
+                textBoxOrderNumber.Text = _Order.OrderNumber;
+                textBoxCreated.Text = _Order.Created.ToString();
+                labelTitleCustomer.Text += ": " +_Order.Customer.FirstName + " " + _Order.Customer.LastName;
+            }
+
             ShowCustomer();
             ShowProducts();
             ShowOrderRows();
@@ -204,8 +212,6 @@ namespace Goatshop
         // update or create the object and save it in the database.
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            Decimal Dnumber;
-            int Inumber;
 
             // check if its a new record.
             if (_Order.OrderNumber == null)
@@ -217,39 +223,14 @@ namespace Goatshop
             _Order.OrderNumber = textBoxOrderNumber.Text;
             _Order.Created = DateTime.Today;
 
-            // Connect the relation - table with category
-            Customer selectedCustomer = Settings.db.Customer.Find(listViewCustomer.SelectedItems[0].Tag);
-            _Order.Customer = selectedCustomer;
+            // Check if there is a customer selected
+            if (listViewCustomer.SelectedItems.Count > 0)
+            {
+                // Connect the relation - table with customer
+                Customer selectedCustomer = Settings.db.Customer.Find(listViewCustomer.SelectedItems[0].Tag);
+                _Order.Customer = selectedCustomer;
 
-
-
-            //// TryParse Decimal
-            //if (Decimal.TryParse(numericPrice.Text, out Dnumber))
-            //{
-            //    _Order.Price = Decimal.Parse(numericPrice.Text);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The price must be a decimal", "ERROR");
-            //}
-
-            //// TryParse Int
-            //if (Int32.TryParse(numericInStock.Text, out Inumber))
-            //{
-            //    _Order.AmountInStock = Int32.Parse(numericInStock.Text);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("The Stock value can only be a number", "ERROR");
-            //}
-
-            //// Connect the relation - table with category
-            //Category selectedCategory = Settings.db.Category.Find(comboBoxCustomer.SelectedValue);
-            //_Order.Category = selectedCategory;
-
-            //// Connect the relation - table with supplier
-            //Supplier selectedSupplier = Settings.db.Supplier.Find(comboBoxSupplier.SelectedValue);
-            //_Order.Supplier = selectedSupplier;
+            }
 
 
             // Check it the name and the price is set higher than 0.
@@ -283,27 +264,6 @@ namespace Goatshop
 
                 ShowOrderRows();
             }
-        }
-
-        private void buttonDeleteOrderRow_Click(object sender, EventArgs e)
-        {
-            if (listViewOrder.SelectedItems.Count > 0)
-            {
-                OrderRow selectedOrderRow = Settings.db.OrderRow.Find(_Order.ID, listViewProduct.SelectedItems[0].Tag);
-
-                Settings.db.OrderRow.Remove(selectedOrderRow);
-                Settings.db.SaveChanges();
-
-                ShowOrderRows();
-
-            }
-            else
-            {
-                MessageBox.Show("Nothing selected", "Info");
-            }
-
-
-
         }
     }
 }

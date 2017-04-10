@@ -38,7 +38,8 @@ namespace Goatshop
             {
                 var ListOffSearchTerms = (from product in ListOffProducts
                                           where (product.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxProductName.Checked == true) || 
-                                          (product.Description.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxDescription.Checked == true)
+                                          (product.Description.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxDescription.Checked == true) ||
+                                          (product.Category.Category1.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 && checkBoxCategory.Checked == true)
                                           select product).ToList();
 
                 ListOffProducts = ListOffSearchTerms;
@@ -192,7 +193,7 @@ namespace Goatshop
             {
                 searchTerm = null;
             }
-            else if (checkBoxProductName.Checked == false && checkBoxDescription.Checked == false)
+            else if (checkBoxProductName.Checked == false && checkBoxDescription.Checked == false && checkBoxCategory.Checked == false)
             {
                 searchTerm = null;
             }

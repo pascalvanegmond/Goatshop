@@ -46,6 +46,7 @@
             this.buttonNew = new System.Windows.Forms.Button();
             this.labelDeleted = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             this.groupBox2.Controls.Add(this.checkBoxOrderNumber);
             this.groupBox2.Location = new System.Drawing.Point(731, 73);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(130, 162);
+            this.groupBox2.Size = new System.Drawing.Size(130, 166);
             this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -83,7 +84,7 @@
             // 
             // buttonResetSearch
             // 
-            this.buttonResetSearch.Location = new System.Drawing.Point(17, 129);
+            this.buttonResetSearch.Location = new System.Drawing.Point(17, 123);
             this.buttonResetSearch.Name = "buttonResetSearch";
             this.buttonResetSearch.Size = new System.Drawing.Size(100, 23);
             this.buttonResetSearch.TabIndex = 6;
@@ -93,7 +94,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(17, 99);
+            this.buttonSearch.Location = new System.Drawing.Point(17, 93);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(100, 23);
             this.buttonSearch.TabIndex = 6;
@@ -159,8 +160,9 @@
             // 
             this.groupBox1.Controls.Add(this.buttonEdit);
             this.groupBox1.Controls.Add(this.buttonReturn);
+            this.groupBox1.Controls.Add(this.buttonDelete);
             this.groupBox1.Controls.Add(this.buttonNew);
-            this.groupBox1.Location = new System.Drawing.Point(731, 242);
+            this.groupBox1.Location = new System.Drawing.Point(731, 241);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(130, 196);
             this.groupBox1.TabIndex = 27;
@@ -216,11 +218,21 @@
             this.labelTitle.TabIndex = 26;
             this.labelTitle.Text = "Orders overview";
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(28, 108);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 7;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 656);
+            this.ClientSize = new System.Drawing.Size(957, 497);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.listViewOrder);
             this.Controls.Add(this.groupBox1);
@@ -256,5 +268,6 @@
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Label labelDeleted;
         private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
